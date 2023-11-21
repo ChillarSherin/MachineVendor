@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingClass">
+
+        <com.budiyev.android.codescanner.CodeScannerView
+            android:id="@+id/scanner_view"
+            app:frameCornersRadius="@dimen/_25sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginBottom="@dimen/_85sdp"
+            android:paddingHorizontal="@dimen/_25sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="Scan QR Code to make payment"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10ssp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/upload_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginBottom="@dimen/_85sdp"
+            android:paddingHorizontal="@dimen/_25sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/upload"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_10ssp" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

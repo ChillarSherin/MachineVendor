@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission
+        android:name="android.permission.BIND_NFC_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CLOUDPOS_CONTACTLESS_CARD" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_campuswallet"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon,android:theme">
+        <activity
+            android:name=".PrintActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+
+        <receiver
+            android:name=".BootReciever"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SecondActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="cat.ereza.customactivityoncrash.RESTART" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ScanPayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StoreActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Amount" />
+        <activity
+            android:name=".StoreActivtySubMenu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Payment_type_names"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LibraryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AmountEnterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RechargeNfc"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AttendanceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FeeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StoreCardPayment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CardInitialisationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CardInitialization"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NfcPay"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AllTablesDisplay"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AttendenceNFC"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StoreActivityMenu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RefundActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RefundNFC"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReportActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Widgets.TimePicker"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RefundDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BlockedcardsTransfer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BlockTransferNFC"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdminSettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TablesDisplayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OnlineRechargeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CardActivationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CardRepair"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LogIn"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdmincardInitialisation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdminCardInitProccess"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdminAmountEnterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AdminRechargeNFC"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Printer.AdminRechargePrinter"
+            android:screenOrientation="portrait" /> <!-- <activity android:name=".CardActivation" android:screenOrientation="portrait" /> -->
+        <activity
+            android:name=".Printer.RechargePrinter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Printer.FeesPrinter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Printer.PaymentPrinter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DatabaseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LibraryNFC"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CardDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Printer.CommonPrinter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Printer.ReportPrinter"
+            android:screenOrientation="portrait" /> <!-- <activity android:name=".Pay_Refund_NFC" android:screenOrientation="portrait" /> -->
+        <activity
+            android:name=".Payment_Main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PaymentRefund"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrintBillActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MachineBlockTransfer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MachineBlkTrnsferNFC"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BlockTransferActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OlineRechargeCheck"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CardInitializationMenu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StudentCodeInitialisation"
+            android:screenOrientation="portrait" /> <!-- <activity android:name=".StudentCodeInitNFC" android:screenOrientation="portrait" /> -->
+        <activity
+            android:name=".StoreActivityListAllItems"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RecoveryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Printer.PaymentBillPrinter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Printer.SaleItemPrinter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Printer.ReportItemWisePrinter"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyBaseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ParentCardActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ParentStudentDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Student_List"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AttendenceNFC_New"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ClassesDisplayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CashOutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReportSecondActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TablesToUpdate"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TablesToUpdateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ParentsMeetingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TeacherAttendance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OpenFirstSector"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GateEntryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreOrderListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PreOrderMenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ServerUploadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".InternetCheckActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BlockCardsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ReInitializeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BlockCardsDownloadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BlockCardsNewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StudentDetailsDownloadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ParentStudentDownloadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ParentDetailsDownloadActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OnlineRechargeNewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OtherUserEnrollActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StoreCardPaymentNew"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RechargeNfcNew"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RefundNFCNew"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AmountNew"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9d551c56dd016c15f301f5f7f29fe2f2dd049c85" />
+        <meta-data
+            android:name="com.google.android.backup.api_key"
+            android:value="AEdPqrEAAAAI8UEC2NcnUBBrGI-mQquwYHCmlAEvQas5lj8WyA" />
+    </application>
+
+</manifest>

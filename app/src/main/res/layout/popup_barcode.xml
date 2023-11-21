@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
+
+
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_centerHorizontal="true"
+        android:gravity="center|center_vertical|center_horizontal"
+        android:text="@string/app_name"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"/>
+
+
+
+    <LinearLayout
+        android:layout_below="@+id/heading"
+        android:id="@+id/barcode"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/barcodeno"
+            style="@style/ThemeOverlay.Material3.AutoCompleteTextView.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_18sdp"
+            android:layout_marginBottom="@dimen/_7sdp"
+            android:elevation="@dimen/_5sdp"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:boxStrokeErrorColor="@color/colorPrimary"
+            app:boxStrokeWidth="0.2dp"
+            app:endIconMode="custom"
+            app:errorTextColor="@color/colorPrimary"
+            app:hintEnabled="false"
+            app:layout_constraintVertical_bias="0.7">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/barcode_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/upload"
+                android:inputType="text"
+                android:paddingVertical="@dimen/_11sdp"
+                android:textSize="@dimen/_12ssp"
+                android:imeOptions="actionDone"
+                tools:ignore="RtlSymmetry" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_margin="@dimen/_5sdp"/>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/barcode"
+        android:layout_width="match_parent"
+        android:layout_height="@android:dimen/app_icon_size"
+        >
+
+        <LinearLayout
+            android:id="@+id/top_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+
+            android:baselineAligned="false"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:id="@+id/lay_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/cancelBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Cancel"
+                    android:layout_marginStart="@dimen/_8ssp"
+                    android:layout_marginEnd="@dimen/_8ssp"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lay_new"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:showDividers="end">
+
+                <Button
+                    android:id="@+id/saveBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Ok"
+                    android:layout_marginStart="@dimen/_8ssp"
+                    android:layout_marginEnd="@dimen/_8ssp"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/actionbarbg"
+    android:paddingBottom="10dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="85dp"
+            android:id="@+id/et_reason"
+            android:background="@drawable/bg_edittext"
+            android:hint="Comments"
+            android:textColorHint="#454545"
+            android:textColor="#454545"
+            android:gravity="top"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/btnok"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:text="Submit"
+            android:textColor="#FFFF"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:layout_below="@+id/et_otp"
+            android:background="@drawable/bg_signinbtn"
+            android:layout_centerHorizontal="true"
+            />
+        <Button
+            android:id="@+id/btncancel"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:text="Cancel"
+            android:textColor="#FFFF"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/et_otp"
+            android:background="@drawable/bg_signinbtn"
+            android:layout_centerHorizontal="true"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>

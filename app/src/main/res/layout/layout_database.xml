@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/actionbarbg"
+        android:gravity="center_vertical|left"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/drawer_indicator"
+            android:layout_width="56dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="start"
+            android:background="@drawable/drawer_selector"
+            android:scaleType="centerInside" />
+
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/drawer_indicator"
+            android:text="Database"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:padding="10dp" />
+
+    <ProgressBar
+        android:id="@+id/progress1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/carddetails"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="CARD DETAILS" />
+
+            <Button
+                android:id="@+id/update"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="Re-Initialise"
+                android:textAllCaps="true" />
+
+            <Button
+                android:id="@+id/updatetoserver"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="SERVER UPDATE" />
+
+            <Button
+                android:id="@+id/blockCards"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="BLOCK CARDS" />
+
+            <Button
+                android:id="@+id/app_restart"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="RESTART APP" />
+
+            <Button
+                android:id="@+id/disp_table"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="DISPLAY TABLES" />
+
+            <Button
+                android:id="@+id/tables_to_update"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="TABLES TO UPDATE" />
+
+            <Button
+                android:id="@+id/apk_update"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="APK UPDATE" />
+
+            <Button
+                android:id="@+id/parent"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="PARENT CARD" />
+
+            <Button
+                android:id="@+id/parentDetails"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center"
+                android:text="DOWNLOAD PARENT-STUDENT DETAILS" />
+
+
+            <Button
+                android:id="@+id/exitapp"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_edittext"
+                android:text="Exit App" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

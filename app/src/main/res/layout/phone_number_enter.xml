@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#CCCFCF"
+    android:paddingBottom="10dp">
+
+    <EditText
+        android:id="@+id/et_number"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:background="@drawable/bg_edittext"
+        android:drawablePadding="15dp"
+        android:gravity="center"
+        android:hint=""
+        android:inputType="number"
+        android:maxLines="1"
+        android:paddingLeft="10dp"
+        android:textColor="#360f35"
+        android:textColorHint="#CFCFCF"
+        android:textSize="55dp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@+id/et_number"
+        android:layout_margin="15dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btn_Submit"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/bg_signinbtn"
+            android:gravity="center"
+            android:text="SUBMIT"
+            android:textAllCaps="false"
+            android:textColor="#FFFF" />
+
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

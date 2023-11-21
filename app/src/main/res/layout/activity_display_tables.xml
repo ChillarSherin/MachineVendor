@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/actionbarbg"
+        android:gravity="center_vertical|left"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/drawer_indicator"
+            android:layout_width="56dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="start"
+            android:background="@drawable/drawer_selector"
+            android:scaleType="centerInside" />
+
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/drawer_indicator"
+            android:text="Display Tables"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_edittext_blue"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Report"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <Button
+                android:id="@+id/success_trans"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:text="Success Transactions" />
+
+            <Button
+                android:id="@+id/payment_trans"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="Payment Transactions" />
+
+            <Button
+                android:id="@+id/dev_info"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="Device Info" />
+
+            <Button
+                android:id="@+id/block_cards"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="Blocked Cards" />
+
+            <Button
+                android:id="@+id/recharg_table"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="Recharge" />
+
+            <Button
+                android:id="@+id/category"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="Category" />
+
+            <Button
+                android:id="@+id/library"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="Library" />
+
+
+            <Button
+                android:id="@+id/attendence"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="Attendence" />
+
+            <Button
+                android:id="@+id/fee"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="FEE" />
+
+            <Button
+                android:id="@+id/itemsale"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="ITEM SALE" />
+
+            <Button
+                android:id="@+id/itemstock"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="ITEM STOCK" />
+
+            <Button
+                android:id="@+id/itemlist"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="ITEM LIST" />
+
+            <Button
+                android:id="@+id/user"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="USER" />
+
+            <Button
+                android:id="@+id/attendencetype"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="ATTENDENCE TYPE" />
+
+            <Button
+                android:id="@+id/paytype"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="PAYMENT TYPE" />
+
+            <Button
+                android:id="@+id/itemtype"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="ITEM TYPE" />
+
+            <Button
+                android:id="@+id/transtype"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="TRANSACTION TYPE" />
+
+            <Button
+                android:id="@+id/online"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_edittext"
+                android:text="ONLINE TRANSACTION" />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

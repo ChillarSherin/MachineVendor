@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/actionbarbg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Card Serial : "
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/cardsl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TEST"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trans Id : "
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/transID1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TEST"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amount : "
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TEST"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnok"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/et_otp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_signinbtn"
+            android:gravity="center"
+            android:text="Confirm"
+            android:textAllCaps="false"
+            android:textColor="#FFFF" />
+
+        <Button
+            android:id="@+id/btnno"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/et_otp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_signinbtn"
+            android:gravity="center"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="#FFFF" />
+    </LinearLayout>
+
+</LinearLayout>

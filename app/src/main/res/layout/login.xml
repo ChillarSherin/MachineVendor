@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_gradient">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:padding="15dp"
+            android:src="@drawable/campuswallet_logo"
+            android:layout_marginTop="@android:dimen/app_icon_size"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:elevation="8dp"
+            app:cardCornerRadius="@dimen/_14sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_20sdp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/login_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:text="Start register you device! "
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="@dimen/_10sdp"/>
+                <EditText
+                    android:id="@+id/usernameedt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/bg_edittext"
+                    android:gravity="center_vertical"
+                    android:hint="User name"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="#360f35"
+                    android:textColorHint="#CFCFCF"
+                    android:textSize="@dimen/_12sdp" />
+
+                <EditText
+                    android:id="@+id/passwrdedt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="#360f35"
+                    android:textColorHint="#CFCFCF"
+                    android:textSize="@dimen/_12sdp" />
+
+                <EditText
+                    android:id="@+id/machineid"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:hint="MachineId"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="#360f35"
+                    android:textColorHint="#CFCFCF"
+                    android:textSize="@dimen/_12sdp" />
+
+                <EditText
+                    android:id="@+id/machineSerial"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/bg_edittext"
+                    android:drawablePadding="15dp"
+                    android:gravity="center_vertical"
+                    android:hint="MachineSerial"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="#360f35"
+                    android:textColorHint="#CFCFCF"
+                    android:textSize="@dimen/_12sdp" />
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignBottom="@+id/cardView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="-84dp"
+            android:layout_marginStart="16dp"
+
+            android:background="@drawable/bg_signinbtn"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Register Your Device"
+            android:textAllCaps="false"
+            android:textColor="#FFFF"
+            android:textSize="@dimen/_12sdp" />
+
+        <LinearLayout
+            android:id="@+id/recovery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="RECOVERY"
+                android:textSize="@dimen/_10sdp"
+                android:layout_margin="@dimen/_14sdp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

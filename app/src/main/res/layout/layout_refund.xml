@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/color7"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_edittext">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/lay1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CARD SERIAL: " />
+
+                <TextView
+                    android:id="@+id/cardser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CARD SERIAL" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay1"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SCHOOL ID: " />
+
+                <TextView
+                    android:id="@+id/schId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SCHOOL ID" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay2"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BALANCE: " />
+
+                <TextView
+                    android:id="@+id/balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BALANCE" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="PREV BAL: " />
+
+                <TextView
+                    android:id="@+id/prevbalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PREV BALANCE" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay3"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EXPIRY: " />
+
+                <TextView
+                    android:id="@+id/expiry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EXPIRY" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay4"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS: " />
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STATUS" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay5"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IN/OUT: " />
+
+                <TextView
+                    android:id="@+id/inout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IN/OUT" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay6"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ATT TYPE " />
+
+                <TextView
+                    android:id="@+id/att_typ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ATT TYPE" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay7"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST TRNS MC ID:" />
+
+                <TextView
+                    android:id="@+id/lst_trnsmcid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST TRNS MC ID" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay8"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST TRNS ID:" />
+
+                <TextView
+                    android:id="@+id/lst_trnsid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST TRNS ID" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay9"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST TRNS AMT:" />
+
+                <TextView
+                    android:id="@+id/lst_trnsamt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST TRNS AMT" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay10"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST RECH MC ID:" />
+
+                <TextView
+                    android:id="@+id/lst_rechmcid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST RECH MC ID" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay11"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST RECH ID:" />
+
+                <TextView
+                    android:id="@+id/lst_rechid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST RECH ID" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lay12"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST RECH AMT:" />
+
+                <TextView
+                    android:id="@+id/lst_rechamt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LAST RECH AMT" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/tap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/color5_1"
+            android:text="PAY " />
+
+        <Button
+            android:id="@+id/tapback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/color5_1"
+            android:text="GO BACK" />
+    </LinearLayout>
+
+
+</LinearLayout>

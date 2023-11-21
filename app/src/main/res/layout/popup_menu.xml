@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:drawable/dialog_holo_light_frame"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/invite"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textview_chooser"
+        android:clickable="true">
+
+        <TextView
+            android:id="@+id/logoutbtn"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Logout"
+            android:textColor="#868686"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="175dp"
+        android:layout_height="1px"
+        android:background="#dddddd"></View>
+
+    <LinearLayout
+        android:id="@+id/feedback"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textview_chooser"
+        android:clickable="true">
+
+        <!--<TextView-->
+        <!--android:layout_width="175dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Feedback"-->
+        <!--android:textColor="#868686"-->
+        <!--android:textSize="14sp" />-->
+
+        <TextView
+            android:id="@+id/settings"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Settings"
+            android:textColor="#868686"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="175dp"
+        android:layout_height="1px"
+        android:background="#dddddd"></View>
+
+    <LinearLayout
+        android:id="@+id/bless"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textview_chooser"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="Version :"
+            android:textColor="#868686"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="Version: "
+            android:textColor="#868686"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

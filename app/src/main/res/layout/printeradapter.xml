@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:gravity="center_horizontal"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+
+        android:layout_height="55dp"
+        android:background="@drawable/bg_edittext"
+        android:gravity="center_horizontal"
+        android:visibility="visible">
+
+
+        <TextView
+            android:id="@+id/itemtxtv"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="first"
+            android:textColor="#8B8C8A"
+            android:textSize="20dp" />
+
+
+        <TextView
+            android:id="@+id/qtytxtv"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="first"
+            android:textColor="#8B8C8A"
+            android:textSize="20dp" />
+
+
+        <TextView
+            android:id="@+id/peramnttxtv"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:text="first"
+            android:textColor="#8B8C8A"
+            android:textSize="20dp" />
+
+
+    </LinearLayout>
+</LinearLayout>
