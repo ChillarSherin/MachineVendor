@@ -2,17 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="10dp"
+    android:layout_marginStart="@dimen/_50sdp"
+    android:layout_marginEnd="@dimen/_50sdp"
     android:gravity="center">
 
-    <Button
-        android:id="@+id/button_item"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@drawable/bg_edittext"
-        android:gravity="center"
-        android:text="Test"
-        android:textSize="20dp" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100ssp"
+        android:id="@+id/order_frm"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp"
+        app:cardBackgroundColor="@color/home_card"
+        android:outlineAmbientShadowColor="@color/txt_black"
+        android:outlineSpotShadowColor="@color/txt_black"
+        android:layout_gravity="center">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/button_item_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="@dimen/_3ssp"
+                android:gravity="center"
+                android:src="@drawable/ic_canteen" />
 
+            <TextView
+                android:id="@+id/button_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Pre-Order"
+                android:textAllCaps="true"
+                android:textColor="@color/txt_home"
+                android:textSize="@dimen/_9ssp"
+                android:textStyle="bold"
+                android:padding="@dimen/_3ssp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </LinearLayout>

@@ -21,7 +21,6 @@ import com.chillarcards.machinevendor.ModelClass.Sales_Item;
 import com.chillarcards.machinevendor.R;
 import com.chillarcards.machinevendor.StoreActivityListAllItems;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,16 +28,16 @@ import java.util.List;
  */
 public class StoreSubmenuListAllAdapter extends RecyclerView.Adapter<StoreSubmenuListAllAdapter.ViewHolder>{
 
-    private List<String> price1 = new ArrayList<>();
-    private List<String> desc = new ArrayList<>();
-    private List<String> itid = new ArrayList<>();
-    private List<String> Itemcode = new ArrayList<>();
+    private final List<String> price1;
+    private final List<String> desc;
+    private final List<String> itid;
+    private final List<String> Itemcode;
     private final int rowLayout;
     private final Context mContext;
     private final Activity activity;
     int flag=0;
+    Activity mActivity;
 
-    int idPosition;
     StoreActivityListAllItems mParentActivity;
 
     public StoreSubmenuListAllAdapter(List<String> desc,List<String> price,List<String> Itemid,List<String> Itemcode,StoreActivityListAllItems mParentActivity, Activity activity,int rowLayout, Context context) {
@@ -50,6 +49,7 @@ public class StoreSubmenuListAllAdapter extends RecyclerView.Adapter<StoreSubmen
         this.rowLayout = R.layout.ist_storesubmenu_item;
         this.mContext = context;
         this.mParentActivity=mParentActivity;
+        this.mActivity = activity;
 
     }
 
@@ -64,17 +64,14 @@ public class StoreSubmenuListAllAdapter extends RecyclerView.Adapter<StoreSubmen
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        idPosition = position;
 
         holder.desc.setText(desc.get(position));
-        holder.price.setText(price1.get(position));
+        holder.price.setText(price1.get(position)+" "+mContext.getString(R.string.currency_oman));
         holder.textCode.setText(Itemcode.get(position));
+        holder.linearLayout.setOnClickListener(view -> onAddDataToCart(position));
+
         System.out.println("CHILLAR:ItemID:"+itid.get(position));
-
-
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -101,100 +98,94 @@ public class StoreSubmenuListAllAdapter extends RecyclerView.Adapter<StoreSubmen
             textCode = (TextView) itemView.findViewById(R.id.textCode);
             linearLayout= (LinearLayout) itemView.findViewById(R.id.linlay);
 
-            itemView.setOnClickListener(this);
-
-
 
         }
 
         @Override
         public void onClick(View v) {
 
-            System.out.println("Recycleview touched");
-
-            final Dialog dlg = new Dialog(v.getContext());
-            dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dlg.setContentView(R.layout.amount_popup);
-            dlg.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            dlg.setCancelable(true);
-            dlg.setCanceledOnTouchOutside(true);
-            dlg.show();
-
-            final EditText editText= (EditText) dlg.findViewById(R.id.et_otp);
-            final  Button button= (Button)                                                                                                                                                    dlg.findViewById(R.id.btn_send_pay);
-
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-
-
-                    int qnty = 0;
-                    if (String.valueOf(editText.getText()).equals("") || String.valueOf(editText.getText()).equals("0")) {
-
-                        Toast.makeText(mContext,"Select a valid quantity.",Toast.LENGTH_SHORT).show();
-
-                    } else {
-
-                        mParentActivity.search.setText("");
-
-                        Constants.Qty = Integer.parseInt(String.valueOf(editText.getText()));
-
-
-                        String id = itid.get(idPosition);
-
-                        System.out.println("CHILLER:ITID:" + id);
-
-
-                         /*
-                         if add same item in many times it will increase the quantity only
-                         */
-                        for (int i = 0; i < Constants.sales_items.size(); i++) {
-
-                            if (Constants.sales_items.get(i).getitem_id().equals(id)) {
-
-                                try {
-                                    qnty = Integer.parseInt(Constants.sales_items.get(i).getitem_quantity()) + Integer.parseInt(String.valueOf(editText.getText()));
-                                    System.out.println("CHILLER:QNTY :" + qnty);
-
-                                    System.out.println("CHILLER:QNTY FINAL:" + Constants.Qty);
-
-                                } catch (NumberFormatException e) {
-                                    qnty = Integer.parseInt(Constants.sales_items.get(i).getitem_quantity()) + 1;
-                                    System.out.println("CHILLER:QNTY :" + qnty);
-                                    System.out.println("CHILLER:QNTY FINAL:" + Constants.Qty);
-                                }
-                                flag = 1;
-                                Constants.sales_items.get(i).setitem_quantity(String.valueOf(qnty));
-                                break;
-
-                            }
-
-                        }
-
-                        if (flag == 0) {
-
-
-                            System.out.println("CHILLER:QNTY FINAL:" + Constants.Qty);
-
-                            String pric = price1.get(idPosition);
-
-                            Constants.sales_items.add(new Sales_Item("testtrans", id, String.valueOf(Constants.Qty), pric));
-
-                            System.out.println("CHILLARItem Amount: " + Constants.Qty);
-
-
-                        }
-
-                        dlg.dismiss();
-
-                    }
-                }
-            });
-
 
 
         }
     }
+     void onAddDataToCart(int position){
+         System.out.println("Recycleview touched");
 
+         final Dialog dlg = new Dialog(mActivity);
+         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
+         dlg.setContentView(R.layout.amount_popup);
+         dlg.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+         dlg.setCancelable(true);
+         dlg.setCanceledOnTouchOutside(true);
+         dlg.show();
+
+         final TextView itemName= (TextView) dlg.findViewById(R.id.item_name);
+         final TextView itemPrice= (TextView) dlg.findViewById(R.id.item_price);
+         final EditText editText= (EditText) dlg.findViewById(R.id.et_otp);
+         final  Button button= (Button)                                                                                                                                                    dlg.findViewById(R.id.btn_send_pay);
+         itemName.setText(desc.get(position));
+         itemPrice.setText("Price : "+price1.get(position)+" "+mContext.getString(R.string.currency_oman));
+
+         button.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+
+
+
+                 int qnty = 0;
+                 if (String.valueOf(editText.getText()).equals("") || String.valueOf(editText.getText()).equals("0")) {
+
+                     Toast.makeText(mContext,"Select a valid quantity.",Toast.LENGTH_SHORT).show();
+
+                 } else {
+
+                     mParentActivity.search.setText("");
+
+                     Constants.Qty = Integer.parseInt(String.valueOf(editText.getText()));
+                     String id = itid.get(position);
+                     System.out.println("CHILLER:ITID:" + id);
+
+                         /*
+                         if add same item in many times it will increase the quantity only
+                         */
+                     for (int i = 0; i < Constants.sales_items.size(); i++) {
+
+                         if (Constants.sales_items.get(i).getitem_id().equals(id)) {
+
+                             try {
+                                 qnty = Integer.parseInt(Constants.sales_items.get(i).getitem_quantity()) + Integer.parseInt(String.valueOf(editText.getText()));
+                                 System.out.println("CHILLER:QNTY :" + qnty);
+
+                                 System.out.println("CHILLER:QNTY FINAL:" + Constants.Qty);
+
+                             } catch (NumberFormatException e) {
+                                 qnty = Integer.parseInt(Constants.sales_items.get(i).getitem_quantity()) + 1;
+                                 System.out.println("CHILLER:QNTY :" + qnty);
+                                 System.out.println("CHILLER:QNTY FINAL:" + Constants.Qty);
+                             }
+                             flag = 1;
+                             Constants.sales_items.get(i).setitem_quantity(String.valueOf(qnty));
+                             break;
+
+                         }
+
+                     }
+
+                     if (flag == 0) {
+
+                         System.out.println("CHILLER:QNTY FINAL:" + Constants.Qty);
+                         String pric = price1.get(position);
+                         Constants.sales_items.add(new Sales_Item("testtrans", id, String.valueOf(Constants.Qty), pric));
+                         System.out.println("CHILLARItem Amount: " + Constants.Qty);
+
+                     }
+
+                     dlg.dismiss();
+
+                 }
+             }
+         });
+
+
+     }
 }

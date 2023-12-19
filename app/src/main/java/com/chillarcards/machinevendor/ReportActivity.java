@@ -50,13 +50,10 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-/**
- * Created by Lester Oliver on 1/28/2015.
- */
 public class ReportActivity extends Activity {
 
     Button Submit;
+
     TextView fromdate;
     Date d1;
     DatabaseHandler db;
@@ -112,8 +109,8 @@ public class ReportActivity extends Activity {
         Button mPrintReport = findViewById(R.id.btn_print);
 
 
-        Button Item_wise = (Button) findViewById(R.id.item_wise);
-        Button total = (Button) findViewById(R.id.total);
+        Button Item_wise = findViewById(R.id.item_wise);
+        Button total = findViewById(R.id.total);
 
         TextView mShopName = findViewById(R.id.shop_name);
         TextView mShopPlace = findViewById(R.id.shop_place);
@@ -125,6 +122,11 @@ public class ReportActivity extends Activity {
         mShopPlace.setText(schoolPlace);
         mBillDate.setText(currentDateTimeString);
 
+        if (!activityname.equals("store")) {
+            Item_wise.setVisibility(View.GONE);
+        }
+
+        //SUBMIT DATE
         Submit.setOnClickListener(v -> {
             String from = fromdate.getText().toString();
 
@@ -138,7 +140,6 @@ public class ReportActivity extends Activity {
                 } catch (ParseException ex) {
                     Logger.getLogger(ReportActivity.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
 
                 //Converting D1
                 String mStringDate = String.valueOf(d1);
@@ -164,6 +165,13 @@ public class ReportActivity extends Activity {
                 dateFrameView.setVisibility(View.GONE);
                 menuFrameView.setVisibility(View.VISIBLE);
                 printFrameView.setVisibility(View.GONE);
+                if (!activityname.equals("store")) {
+                    Item_wise.setVisibility(View.GONE);
+                }
+                trans_type_id = String.valueOf(db.getTransTypID(Constants.Category));
+
+//                formatedDate = b.getString("Date");
+//                activityname = b.getString("activity");
 
 
 //                Intent i = new Intent(getApplicationContext(), ReportSecondActivity.class);
@@ -197,6 +205,8 @@ public class ReportActivity extends Activity {
 
         //TWO MENU HANDLING
         total.setOnClickListener(v -> {
+            System.out.println("CHILLAR sherin trans_type_id" + "sssssssssssssss"+trans_type_id);
+
             List<Success_Transaction> successtransactions;
             if (activityname.equals("tabledisplay")) {
                 successtransactions = db.getSuccessdatewise(formatedDate);
@@ -204,7 +214,9 @@ public class ReportActivity extends Activity {
             } else {
                 successtransactions = db.getSuccessdatewise(formatedDate, trans_type_id);
                 translength = db.getSuccessdatewise(formatedDate, trans_type_id).size();
+
             }
+            System.out.println("CHILLAR sherin trans_type_id" + "sssssssssssssss"+activityname);
 
             TotalAmount = (float) 0;
             for (Success_Transaction usp : successtransactions) {
@@ -256,6 +268,7 @@ public class ReportActivity extends Activity {
 //            finish();
 
         });
+
         Item_wise.setOnClickListener(v -> {
             SaleItemId.clear();
             SaleItemPrint.clear();
@@ -263,7 +276,6 @@ public class ReportActivity extends Activity {
             SaleItemId = db.getdistinctItemid(formatedDate, trans_type_id);
 
             if (SaleItemId.size() > 0) {
-
 
                 for (int i = 0; i < SaleItemId.size(); ++i) {
 
@@ -293,15 +305,12 @@ public class ReportActivity extends Activity {
 
                         System.out.println("CHILLAR: Substrng <20");
                         String filler = "";
-
                         int len = 20 - ItemName.length();
                         for (int j = 0; j < len; ++j) {
-
                             filler = filler + " ";
                         }
                         ItemName = ItemName + filler;
                     }
-
                     SaleItemPrint.add(ItemName + "         " + tot_qty);
                 }
 
@@ -477,4 +486,5 @@ public class ReportActivity extends Activity {
 
         pdfDocument.close();
     }
+
 }

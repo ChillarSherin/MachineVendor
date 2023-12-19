@@ -66,71 +66,63 @@ public class ReportSecondActivity extends Activity {
 
 
 
-        total.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        total.setOnClickListener(v -> {
+
+            List<Success_Transaction> successtransactions= new ArrayList<Success_Transaction>();
+            if(activityname.equals("tabledisplay")){
+                successtransactions = db.getSuccessdatewise(formatedDate);
+                translength = db.getSuccessdatewise(formatedDate).size();
+            }else{
+                successtransactions = db.getSuccessdatewise(formatedDate,trans_type_id);
+                translength = db.getSuccessdatewise(formatedDate,trans_type_id).size();
+            }
 
 
+            TotalAmount = (float) 0;
+            for (Success_Transaction usp : successtransactions) {
+                String testpermissionnew = "   transaction id  " + usp.gettrans_id() + " user_id :" + usp.getuser_id() +
+                        "   transaction_type_id:   " + usp.gettranstypeid() + "  previous balance :  " + usp.getprevious_balnce() + "  current balance   "
+                        + usp.getcurrent_balance() + "  crad serial " + usp.getcard_serial() + " time stamp " + usp.gettime_stamp() +
+                        "  Server timestamp  " + usp.getserver_timestamp();
 
 
-                //getting all reports of the selecting date
-//                db.getSuccessdatewise(formatedDate);
-                List<Success_Transaction> successtransactions= new ArrayList<Success_Transaction>();
-                if(activityname.equals("tabledisplay")){
-                    successtransactions = db.getSuccessdatewise(formatedDate);
-                    translength = db.getSuccessdatewise(formatedDate).size();
-                }else{
-                    successtransactions = db.getSuccessdatewise(formatedDate,trans_type_id);
-                    translength = db.getSuccessdatewise(formatedDate,trans_type_id).size();
+                if (usp.getprevious_balnce() > usp.getcurrent_balance()) {
+                    TotalAmount = TotalAmount + (usp.getprevious_balnce() - usp.getcurrent_balance());
+                } else {
+                    TotalAmount = TotalAmount + (usp.getcurrent_balance() - usp.getprevious_balnce());
                 }
 
 
-                TotalAmount = (float) 0;
-                for (Success_Transaction usp : successtransactions) {
-                    String testpermissionnew = "   transaction id  " + usp.gettrans_id() + " user_id :" + usp.getuser_id() +
-                            "   transaction_type_id:   " + usp.gettranstypeid() + "  previous balance :  " + usp.getprevious_balnce() + "  current balance   "
-                            + usp.getcurrent_balance() + "  crad serial " + usp.getcard_serial() + " time stamp " + usp.gettime_stamp() +
-                            "  Server timestamp  " + usp.getserver_timestamp();
+                System.out.println("CHILLAR Total Amount" + TotalAmount);
+                System.out.println("CHILLAR secact success transaction datewise" + testpermissionnew);
+
+                transactionID = usp.gettrans_id();
+                transactionTypeID = String.valueOf(usp.gettranstypeid());
+                successcardSerial = usp.getcard_serial();
+                successPrint = successPrint +"   "+ transactionID  +"  "+ transactionTypeID +"    "+ successcardSerial + "\n";
 
 
-                    if (usp.getprevious_balnce() > usp.getcurrent_balance()) {
-                        TotalAmount = TotalAmount + (usp.getprevious_balnce() - usp.getcurrent_balance());
-                    } else {
-                        TotalAmount = TotalAmount + (usp.getcurrent_balance() - usp.getprevious_balnce());
-                    }
-
-
-                    System.out.println("CHILLAR Total Amount" + TotalAmount);
-                    System.out.println("CHILLAR secact success transaction datewise" + testpermissionnew);
-
-                    transactionID = usp.gettrans_id();
-                    transactionTypeID = String.valueOf(usp.gettranstypeid());
-                    successcardSerial = usp.getcard_serial();
-                    successPrint = successPrint +"   "+ transactionID  +"  "+ transactionTypeID +"    "+ successcardSerial + "\n";
-
-
-                    System.out.println("CHILLAR Success transaction details" + transactionID + "  " + transactionTypeID + "   " + successcardSerial);
-                    System.out.println("CHILLAR Success transaction details" +successPrint);
-
-                }
-
-                System.out.println("CHILLAR Success final" +successPrint);
-                System.out.println("CHILLAR Final TotalAmount" + TotalAmount);
-                System.out.println("CHILLAR Final TransLength" + translength);
-
-                Intent i = new Intent(getApplicationContext(), ReportPrinter.class);
-                Bundle printbundle = new Bundle();
-                //  printbundle.putString("successprint", successPrint);
-                printbundle.putInt("TotalTransaction", translength);
-                printbundle.putFloat("TotalAmount", TotalAmount);
-
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                i.putExtras(printbundle);
-                startActivity(i);
-                finish();
-
+                System.out.println("CHILLAR Success transaction details" + transactionID + "  " + transactionTypeID + "   " + successcardSerial);
+                System.out.println("CHILLAR Success transaction details" +successPrint);
 
             }
+
+            System.out.println("CHILLAR Success final" +successPrint);
+            System.out.println("CHILLAR Final TotalAmount" + TotalAmount);
+            System.out.println("CHILLAR Final TransLength" + translength);
+
+            Intent i = new Intent(getApplicationContext(), ReportPrinter.class);
+            Bundle printbundle = new Bundle();
+            //  printbundle.putString("successprint", successPrint);
+            printbundle.putInt("TotalTransaction", translength);
+            printbundle.putFloat("TotalAmount", TotalAmount);
+
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.putExtras(printbundle);
+            startActivity(i);
+            finish();
+
+
         });
 
 
@@ -151,8 +143,6 @@ public class ReportSecondActivity extends Activity {
                         tot_amt=(float)0;
 
                         System.out.println("Chillar NamebyID: "+db.getItemNamebyID(SaleItemId.get(i)) );
-
-//                    SaleItemPrint.add(db.getItemNamebyID(SaleItemId.get(i)));
 
                         List<Sales_Item> sale1 =  db.getAllsalebyId(Integer.parseInt(SaleItemId.get(i)),formatedDate, trans_type_id);
 

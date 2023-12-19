@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -43,6 +44,7 @@ public class StoreActivtySubMenu extends Activity implements View.OnKeyListener 
     ImageView checkout;
     ProgressBar progressBar;
 
+    TextView menuName;
     String id,itemname;
     String typeId,typeName;
     DatabaseHandler db;
@@ -76,6 +78,7 @@ public class StoreActivtySubMenu extends Activity implements View.OnKeyListener 
         id = editor.getString("ITEMID", "0");
         itemname = editor.getString("ITEM", "");
 
+        menuName.setText(typeName+" - "+itemname );
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,8 +90,6 @@ public class StoreActivtySubMenu extends Activity implements View.OnKeyListener 
                 b.putParcelableArrayList("salesset", (ArrayList<? extends Parcelable>) Constants.sales_items);
                 intent.putExtras(b);
                 startActivity(intent);
-
-
             }
         });
 
@@ -111,7 +112,6 @@ public class StoreActivtySubMenu extends Activity implements View.OnKeyListener 
         } catch (Exception e) {
            e.printStackTrace();
         }
-
     }
 
     private void initialiseViews() {
@@ -125,6 +125,7 @@ public class StoreActivtySubMenu extends Activity implements View.OnKeyListener 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         search = findViewById(R.id.searchbar);
         checkout = findViewById(R.id.checkout2);
+        menuName = findViewById(R.id.button_item);
 
     }
 
@@ -180,7 +181,7 @@ public class StoreActivtySubMenu extends Activity implements View.OnKeyListener 
         final Resources resources = getResources();
 
         drawerArrowDrawable = new com.chillarcards.machinevendor.Widgets.DrawerArrowDrawable(resources);
-        drawerArrowDrawable.setStrokeColor(resources.getColor(R.color.white));
+        drawerArrowDrawable.setStrokeColor(resources.getColor(R.color.luc_black));
         imageView.setImageDrawable(drawerArrowDrawable);
 
         offset = 0;

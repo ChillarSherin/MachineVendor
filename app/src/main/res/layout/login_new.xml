@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_gradient">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_gravity="center"
+                android:padding="1dp"
+                android:src="@drawable/campuswallet_logo" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/cardView"
+            android:layout_below="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/login_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:text="Start register you device! "
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/usernameedt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:gravity="center_vertical"
+                android:hint="User name"
+                android:inputType="text"
+                android:paddingStart="10dp"
+                android:singleLine="true"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CFCFCF"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/passwrdedt"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="13dp"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CFCFCF"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/machineid"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="13dp"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:hint="MachineId"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CFCFCF"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/machineSerial"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="13dp"
+                android:drawablePadding="15dp"
+                android:gravity="center_vertical"
+                android:hint="MachineSerial"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CFCFCF"
+                android:textSize="@dimen/_12sdp" />
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/loginbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignBottom="@+id/cardView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="-84dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_signinbtn"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Register Your Device"
+            android:textAllCaps="false"
+            android:textColor="#FFFF"
+            android:textSize="@dimen/_12sdp" />
+
+        <LinearLayout
+            android:id="@+id/recovery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="RECOVERY"
+                android:textSize="@dimen/_10sdp"
+                android:layout_margin="@dimen/_14sdp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

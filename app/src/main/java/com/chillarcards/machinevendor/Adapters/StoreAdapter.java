@@ -5,26 +5,26 @@ package com.chillarcards.machinevendor.Adapters;
  * Created by Codmob on 07-07-16.
  */
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-import java.util.ArrayList;
-import java.util.List;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.chillarcards.machinevendor.R;
 import com.chillarcards.machinevendor.StoreActivtySubMenu;
 
-import static android.content.Context.MODE_PRIVATE;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -60,8 +60,6 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
         return new ViewHolder(v);
-
-
     }
 
 
@@ -75,27 +73,24 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         System.out.println("CHILLAR:size" + getItemCount());
 
 
-        holder.storeLinearlayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.storeLinearlayout.setOnClickListener(v -> {
 
-                SharedPreferences.Editor editor1 = mContext.getSharedPreferences("Chillar", MODE_PRIVATE).edit();
-                editor1.putString("ITEMID", String.valueOf(descId.get(position)));
-                editor1.putString("ITEM", String.valueOf(desc.get(position)));
-                editor1.commit();
+            SharedPreferences.Editor editor1 = mContext.getSharedPreferences("Chillar", MODE_PRIVATE).edit();
+            editor1.putString("ITEMID", String.valueOf(descId.get(position)));
+            editor1.putString("ITEM", String.valueOf(desc.get(position)));
+            editor1.commit();
 
-                Intent i = new Intent(mContext.getApplicationContext(), StoreActivtySubMenu.class);
-                Bundle b = new Bundle();
-                b.putString("ITEM", desc.get(position));
-                b.putInt("ITEMID", descId.get(position));
-                b.putString("typeId", typeId);
-                b.putString("typeName", typeName);
-                i.putExtras(b);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(i);
+            Intent i = new Intent(mContext.getApplicationContext(), StoreActivtySubMenu.class);
+            Bundle b = new Bundle();
+            b.putString("ITEM", desc.get(position));
+            b.putInt("ITEMID", descId.get(position));
+            b.putString("typeId", typeId);
+            b.putString("typeName", typeName);
+            i.putExtras(b);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(i);
 
 
-            }
         });
 
     }

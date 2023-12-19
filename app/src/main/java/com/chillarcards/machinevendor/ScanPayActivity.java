@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,7 +72,7 @@ public class ScanPayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_scan);
 
-        dialog = new ProgressDialog(this);
+        dialog = new ProgressDialog(ScanPayActivity.this);
         db = DatabaseHandler.getInstance(getApplicationContext());
 
         Bundle b=getIntent().getExtras();
@@ -96,7 +97,6 @@ public class ScanPayActivity extends AppCompatActivity {
 
             name = db.getItemNamebyID(id);
 
-
             item.add(name);
             price.add(pric);
             quantity.add(qty);
@@ -112,7 +112,7 @@ public class ScanPayActivity extends AppCompatActivity {
 
     private void onUploadCreateDialog() {
         AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("Upload Dialog")
+                .setTitle("Enter the Student Code Manually")
                 .setView(R.layout.popup_barcode)
                 .setCancelable(false)
                 .create();
@@ -123,8 +123,14 @@ public class ScanPayActivity extends AppCompatActivity {
         Button noBtn = dialog.findViewById(R.id.cancelBtn);
 
         yesBtn.setOnClickListener(v -> {
-            onScannedComplete(mBarcodeEt.getText().toString());
-            dialog.dismiss();
+            assert mBarcodeEt != null;
+            String enteredText = mBarcodeEt.getText().toString().trim();
+            if (!TextUtils.isEmpty(enteredText)) {
+                onScannedComplete(enteredText);
+                dialog.dismiss();
+            } else {
+                mBarcodeEt.setError("Enter a valid code");
+            }
         });
 
         noBtn.setOnClickListener(v -> dialog.dismiss());
@@ -160,8 +166,7 @@ public class ScanPayActivity extends AppCompatActivity {
         // Handle the scanned value as needed
         try {
             // Navigate to the next fragment with the scanned value
-            Toast.makeText(this, "onScannedComplete: " + scannedValue, Toast.LENGTH_SHORT).show();
-            PhpLoader(scannedValue, "222", "1");
+            PhpLoader(scannedValue, "123", "1");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -173,9 +178,8 @@ public class ScanPayActivity extends AppCompatActivity {
                 Log.d("abc_scan", "reqPerm: " + isGranted);
                 if (isGranted) {
                     setUpQRScanner();
-                    refreshFragment();
+                  //  refreshFragment();
                 } else {
-                    // Permission denied. Handle accordingly.
                     showAlert();
                   // this.onBackPressed();
                 }
@@ -183,7 +187,6 @@ public class ScanPayActivity extends AppCompatActivity {
 
     private void refreshFragment() {
         try {
-            Toast.makeText(this, "refesh Page", Toast.LENGTH_SHORT).show();
 //            Integer id = NavHostFragment.findNavController(this).getCurrentDestination().getId();
 //            NavHostFragment.findNavController(this).popBackStack(id, true);
 //            NavHostFragment.findNavController(this).navigate(id);
@@ -197,9 +200,11 @@ public class ScanPayActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) !=
                 PackageManager.PERMISSION_GRANTED && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-                showAlert();
+              //  showAlert();
+                requestPermissionLauncher.launch(Manifest.permission.CAMERA);
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+                requestPermissionLauncher.launch(Manifest.permission.CAMERA);
+             //   ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
             }
         } else {
             setUpQRScanner();
@@ -210,9 +215,9 @@ public class ScanPayActivity extends AppCompatActivity {
     private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Need permission(s)");
-        builder.setMessage("Some permissions are required to do the task.");
-        builder.setPositiveButton("OK", (dialog, which) -> goToSettings());
-        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.dismiss());
+        builder.setMessage("You cannot finish the payment if you do not provide authorization for cameras.");
+        builder.setPositiveButton("OK", (dialog, which) -> checkCameraPermission());
+
         AlertDialog dialog = builder.create();
         dialog.show();
     }
@@ -223,6 +228,8 @@ public class ScanPayActivity extends AppCompatActivity {
         Uri uri = Uri.fromParts("package", getPackageName(), null);
         intent.setData(uri);
         startActivity(intent);
+
+        setUpQRScanner();
     }
 
     private void PhpLoader(final String code, String pin, final String userType) {
@@ -281,18 +288,20 @@ public class ScanPayActivity extends AppCompatActivity {
                     case "201":
 
                         Toast.makeText(getApplicationContext(), "Pin not matched!", Toast.LENGTH_SHORT).show();
+                        onBackPressed();
 
                         break;
                     case "202":
                         //Pin not set. Set new Pin
                         Toast.makeText(getApplicationContext(), "Set New Pin", Toast.LENGTH_SHORT).show();
+                        onBackPressed();
 
                         break;
                     case "error":
 
                         String server_respose1 = jsonObject.getString("message");
-
                         Toast.makeText(getApplicationContext(), server_respose1, Toast.LENGTH_SHORT).show();
+                        onBackPressed();
 
                         break;
                 }
@@ -309,7 +318,6 @@ public class ScanPayActivity extends AppCompatActivity {
         }, error -> {
             dialog.dismiss();
             Toast.makeText(getApplicationContext(), "Network Error. Please try again", Toast.LENGTH_SHORT).show();
-
             finish();
 
         });
@@ -325,10 +333,7 @@ public class ScanPayActivity extends AppCompatActivity {
 
     }
 
-    
     //PASS DATA TO SERVER
-
-
     private void PhpLoaderTest1(final String cardSerial, String dataExtra) throws UnsupportedEncodingException {
 
         dialog.setMessage("Please Wait..");
@@ -437,7 +442,7 @@ public class ScanPayActivity extends AppCompatActivity {
                 URL, response -> {
                     Log.d("Urlsuccesstransaction ScanPay 2", response);
 
-                    dialog.dismiss();
+                   // dialog.dismiss();
 
                     try {
 
@@ -494,7 +499,6 @@ public class ScanPayActivity extends AppCompatActivity {
 
     private void DBReadWrite(String cardSerial, String currBal, String prevBal) throws UnsupportedEncodingException {
 
-
         Float Prev = Float.valueOf(prevBal);
         Float Current = Float.valueOf(currBal);
 
@@ -505,7 +509,6 @@ public class ScanPayActivity extends AppCompatActivity {
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         String encodedDate = df.format(new Date());
-
         String currentDateTimeString = URLEncoder.encode(encodedDate, "UTF-8");
 
 
@@ -519,22 +522,17 @@ public class ScanPayActivity extends AppCompatActivity {
 
             System.out.println("CHILLER: STORECARDPAYMENT salesitems: " + Constants.sales_items.get(i).getitem_id());
 
-
             String id = String.valueOf(Constants.sales_items.get(i).getitem_id());
             String pric = String.valueOf(Constants.sales_items.get(i).getamount());
             String qty = String.valueOf(Constants.sales_items.get(i).getitem_quantity());
-
             Sales_Item sales_item = new Sales_Item(trans_id, id, qty, pric, "");
 
             db.addsale(sales_item);
-
         }
 
         List<Sales_Item> sales_item = db.getAllsale();
         for (Sales_Item slesitm : sales_item) {
-
             System.out.println("ELDHOSSSSSS::SalesItemID:" + slesitm.getitem_id() + " SalesTransID: " + slesitm.getsales_trans_id() + " ServerTS:  " + slesitm.getserver_timestamp());
-
         }
 
 
@@ -569,8 +567,6 @@ public class ScanPayActivity extends AppCompatActivity {
         print3 = "  UserSer    " + cardSerial + "\n" +
                 "   PrevBal    " + Float.parseFloat(prevBal) + "\n";
 
-
-        Toast.makeText(this, "DONE", Toast.LENGTH_SHORT).show();
 
         Intent i = new Intent(getApplicationContext(), CommonPrinter.class);
         Bundle printbundle = new Bundle();

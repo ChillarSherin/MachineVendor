@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#002E93</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="theme_bg">#F6F6F6</color>
+    <color name="colorPrimary">#2B51A3</color>
+    <color name="colorPrimaryDark">#002E93</color>
     <color name="colorAccent">#80C149</color>
     <color name="drawe_arrow_selecter">#ef6c00</color>
     <color name="transparent">#00000000</color>
@@ -18,8 +19,15 @@
     <color name="blue">#22A0DB</color>
     <color name="luc_black">#9E202020</color>
     <color name="txt_black">#9E202020</color>
+    <color name="txt_home">#06377B</color>
+
+    <color name="home_card">#E0E6EF</color>
+    <color name="item_card">#F0F3F8</color>
 
     <color name="cyan">#14BAB6</color>
     <color name="wallet_highlighted_text_holo_dark">#6633b5e5</color>
 
+    <color name="menu_one">#331EB6B3</color>
+    <color name="menu_two">#331CA1DC</color>
+    <color name="menu_three">#33157CA9</color>
 </resources>

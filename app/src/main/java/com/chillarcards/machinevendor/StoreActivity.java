@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,6 +48,7 @@ public class StoreActivity extends Activity {
     DatabaseHandler db;
     ProgressBar progressBar;
     EditText search;
+    TextView menuName;
 
 
     private Activity activity;
@@ -60,7 +62,8 @@ public class StoreActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) throws CursorIndexOutOfBoundsException {
         super.onCreate(savedInstanceState);
-// Hide the status bar
+
+        // Hide the status bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -68,74 +71,58 @@ public class StoreActivity extends Activity {
 
         db = DatabaseHandler.getInstance(getApplicationContext());
         activity = this;
+
         Bundle b = getIntent().getExtras();
         typeId = b.getString("typeId");
         typeName = b.getString("typeName");
 
         initialiseViews();
+        menuName.setText(typeName);
 
         System.out.println("CHILLAR: typeid " + typeId);
 
         List<CategoryList> contacts1 = db.getAllCategoryItems(Integer.parseInt(typeId));
-
         try {
-
             new StoreAsyncTask(contacts1).execute();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        refund.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        refund.setOnClickListener(v -> {
+            Intent i1 = new Intent(getApplicationContext(), RefundActivity.class);
+            Bundle b1 = new Bundle();
+            b1.putString("typeId", typeId);
+            b1.putString("typeName", typeName);
+            i1.putExtras(b1);
+            startActivity(i1);
 
-                Intent i1 = new Intent(getApplicationContext(), RefundActivity.class);
-                Bundle b = new Bundle();
-                b.putString("typeId", typeId);
-                b.putString("typeName", typeName);
-                i1.putExtras(b);
-                startActivity(i1);
-
-            }
         });
 
-        report.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i2 = new Intent(getApplicationContext(), ReportActivity.class);
-                Bundle b = new Bundle();
-                b.putString("activity", "store");
-                i2.putExtras(b);
-                startActivity(i2);
-
-            }
+        report.setOnClickListener(v -> {
+            Intent i2 = new Intent(getApplicationContext(), ReportActivity.class);
+            Bundle b12 = new Bundle();
+            b12.putString("activity", "store");
+            i2.putExtras(b12);
+            startActivity(i2);
         });
 
-        listAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), StoreActivityListAllItems.class);
-                Bundle b = new Bundle();
-                b.putString("typeId", typeId);
-                b.putString("typeName", typeName);
-                i.putExtras(b);
-                startActivity(i);
-            }
+        listAll.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), StoreActivityListAllItems.class);
+            Bundle b14 = new Bundle();
+            b14.putString("typeId", typeId);
+            b14.putString("typeName", typeName);
+            i.putExtras(b14);
+            startActivity(i);
         });
 
 
-        checkout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
-                Bundle b = new Bundle();
-                b.putString("typeId", typeId);
-                b.putString("typeName", typeName);
-                intent.putExtras(b);
-                startActivity(intent);
-            }
+        checkout.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
+            Bundle b13 = new Bundle();
+            b13.putString("typeId", typeId);
+            b13.putString("typeName", typeName);
+            intent.putExtras(b13);
+            startActivity(intent);
         });
 
 
@@ -154,6 +141,7 @@ public class StoreActivity extends Activity {
         listAll = findViewById(R.id.listall);
         refund = findViewById(R.id.refund);
         report = findViewById(R.id.report);
+        menuName = findViewById(R.id.button_item);
 
         drawerArrow();
     }
@@ -225,11 +213,12 @@ public class StoreActivity extends Activity {
             PopupConfrm.setContentView(R.layout.layout_confrmpopup);
             PopupConfrm.setTitle("Are you Sure Want To Go Back?");
             PopupConfrm.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            TextView message = PopupConfrm.findViewById(R.id.textpopup);
             OkButton = (Button) PopupConfrm.findViewById(R.id.btnok);
             NoButton = (Button) PopupConfrm.findViewById(R.id.btnno);
             PopupConfrm.show();
 
-
+            message.setText("Are you Sure Want To Go Back?");
             OkButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -241,14 +230,7 @@ public class StoreActivity extends Activity {
             });
 
 
-            NoButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    PopupConfrm.cancel();
-
-
-                }
-            });
+            NoButton.setOnClickListener(v -> PopupConfrm.cancel());
 
 
         } else {
@@ -264,7 +246,7 @@ public class StoreActivity extends Activity {
         final Resources resources = getResources();
 
         drawerArrowDrawable = new com.chillarcards.machinevendor.Widgets.DrawerArrowDrawable(resources);
-        drawerArrowDrawable.setStrokeColor(resources.getColor(R.color.white));
+        drawerArrowDrawable.setStrokeColor(resources.getColor(R.color.luc_black));
         imageView.setImageDrawable(drawerArrowDrawable);
 
         offset = 0;
@@ -308,14 +290,8 @@ public class StoreActivity extends Activity {
                 String cat_name = cn.getcategory_name();
 
                 int catId = cn.getcategory_id();
-
                 category.add(cat_name);
                 categoryID.add(catId);
-
-                // Writing Contacts to log
-                System.out.println("CHILLAR Category ID: " + catId);
-                System.out.println("CHILLAR Category Name: " + cat_name);
-
             }
 
             for (int i = 0; i < category.size(); i++) {
@@ -329,11 +305,6 @@ public class StoreActivity extends Activity {
 
         @Override
         protected void onPostExecute(String s) {
-
-//            Toast.makeText(StoreActivity.this, "size: " + category.size(), Toast.LENGTH_SHORT).show();
-//            for (int i = 0; i < category.size(); i++) {
-//                Toast.makeText(StoreActivity.this, "cat: " + category.get(i), Toast.LENGTH_SHORT).show();
-//            }
 
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());

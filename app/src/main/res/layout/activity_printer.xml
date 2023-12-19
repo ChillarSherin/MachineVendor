@@ -118,9 +118,10 @@
                             android:textColor="@color/txt_black"
                             android:layout_marginBottom="2dp"/>
                         <TextView
+                            android:id="@+id/bill_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Staff Name: "
+                            android:text="Bill No: "
                             android:textColor="@color/txt_black"
                             android:textSize="@dimen/_9ssp"
                             android:layout_marginBottom="@dimen/_10sdp"/>
@@ -298,7 +299,7 @@
                 android:id="@+id/print_bill"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="end"
                 android:layout_marginBottom="4dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/bg_signinbtn"
@@ -309,6 +310,8 @@
                 android:textAllCaps="false"
                 android:textColor="#FFFF"
                 android:textSize="@dimen/_12sdp"
+                android:layout_marginEnd="16dp"
+
                 />
 
         </LinearLayout>

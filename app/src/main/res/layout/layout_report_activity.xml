@@ -42,14 +42,20 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <ImageView
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
-            android:padding="15dp"
-            android:src="@drawable/campuswallet_logo"
-            android:layout_marginTop="@android:dimen/app_icon_size"/>
-
+        <LinearLayout
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            >
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_gravity="center"
+                android:padding="1dp"
+                android:src="@drawable/campuswallet_logo" />
+        </LinearLayout>
         <RelativeLayout
             android:id="@+id/date_frame"
             android:layout_width="match_parent"
@@ -111,6 +117,9 @@
                 android:layout_marginStart="16dp"
                 android:background="@drawable/bg_signinbtn"
                 android:gravity="center"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="Submit"
@@ -176,7 +185,6 @@
                         android:gravity="center"
                         android:text="ITEM WISE"
                         android:layout_marginTop="10dp"
-                        android:visibility="visible"
                         />
 
                 </LinearLayout>
@@ -416,6 +424,9 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="Print"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+
                 android:textAllCaps="false"
                 android:textColor="#FFFF"
                 android:textSize="@dimen/_12sdp" />

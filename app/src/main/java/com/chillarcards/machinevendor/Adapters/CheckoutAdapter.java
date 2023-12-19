@@ -6,22 +6,22 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.chillarcards.machinevendor.CheckoutActivity;
 import com.chillarcards.machinevendor.Constants;
 import com.chillarcards.machinevendor.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by Codmob on 09-07-16.
@@ -62,10 +62,9 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
         holder.itemid.setText(id.get(position));
-        holder.pric.setText(pricc.get(position));
+        holder.pric.setText(pricc.get(position)+" "+mContext.getString(R.string.currency_oman));
         holder.qty.setText(quant.get(position));
-        holder.total.setText(total.get(position));
-
+        holder.total.setText(total.get(position)+" "+mContext.getString(R.string.currency_oman));
 
     }
 

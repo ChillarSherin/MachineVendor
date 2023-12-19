@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +41,8 @@ public class CheckoutActivity extends Activity implements View.OnKeyListener {
     CheckoutAdapter mAdapter;
     Float total = (float) 0;
     TextView totamount;
-    Button paybtn;
+
+    LinearLayout paybtn;
     Button OkButton, NoButton;
     ProgressBar progressBar;
 
@@ -91,7 +93,7 @@ public class CheckoutActivity extends Activity implements View.OnKeyListener {
 
         }
 
-        totamount.setText(total + "");
+        totamount.setText(total+" "+getApplicationContext().getString(R.string.currency_oman));
 
 
         paybtn.setOnClickListener(v -> {
@@ -136,11 +138,13 @@ public class CheckoutActivity extends Activity implements View.OnKeyListener {
     }
 
     private void initialiseViews() {
-        progressBar = (ProgressBar) findViewById(R.id.progbar);
+
+        progressBar =  findViewById(R.id.progbar);
         progressBar.setVisibility(View.INVISIBLE);
-        mRecyclerView = (RecyclerView) findViewById(R.id.listCheckout);
-        totamount = (TextView) findViewById(R.id.totalamt);
-        paybtn = (Button) findViewById(R.id.paybtn);
+        mRecyclerView = findViewById(R.id.listCheckout);
+        totamount = findViewById(R.id.totalamt);
+        paybtn =  findViewById(R.id.paybtn);
+
         drawerArrow();
     }
 
@@ -149,7 +153,7 @@ public class CheckoutActivity extends Activity implements View.OnKeyListener {
         final Resources resources = getResources();
 
         drawerArrowDrawable = new com.chillarcards.machinevendor.Widgets.DrawerArrowDrawable(resources);
-        drawerArrowDrawable.setStrokeColor(resources.getColor(R.color.white));
+        drawerArrowDrawable.setStrokeColor(resources.getColor(R.color.luc_black));
         imageView.setImageDrawable(drawerArrowDrawable);
 
         offset = 0;

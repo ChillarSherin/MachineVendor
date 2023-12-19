@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +36,7 @@ public class StoreActivityListAllItems extends Activity {
     StoreSubmenuListAllAdapter mAdapter;
     ImageView checkout;
     ProgressBar progressBar;
+    TextView menuName;
 
     String typeId,typeName;
     List<ItemList> contacts1 = new ArrayList<ItemList>();
@@ -54,25 +56,15 @@ public class StoreActivityListAllItems extends Activity {
 
         initialise();
 
+        checkout.setOnClickListener(v -> {
 
-        checkout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
+            Bundle b = new Bundle();
+            b.putString("typeId",typeId);
+            b.putString("typeName",typeName);
+            intent.putExtras(b);
+            startActivity(intent);
 
-//                Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
-//                Bundle b = new Bundle();
-//                b.putParcelableArrayList("salesset", (ArrayList<? extends Parcelable>) Constants.sales_items);
-//                intent.putExtras(b);
-//                startActivity(intent);
-
-                Intent intent = new Intent(getApplicationContext(), CheckoutActivity.class);
-                Bundle b = new Bundle();
-                b.putString("typeId",typeId);
-                b.putString("typeName",typeName);
-                intent.putExtras(b);
-                startActivity(intent);
-
-            }
         });
 
         contacts1 = db.getAllListItems(Integer.parseInt(typeId));
@@ -96,11 +88,14 @@ public class StoreActivityListAllItems extends Activity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         search = (EditText) findViewById(R.id.searchbar);
         checkout = (ImageView) findViewById(R.id.checkout2);
+        menuName = findViewById(R.id.button_item);
 
         Bundle b = getIntent().getExtras();
         String itemname = b.getString("ITEM");
         typeId = b.getString("typeId");
         typeName = b.getString("typeName");
+
+        menuName.setText(typeName);
 
         activity=this;
 
@@ -162,7 +157,7 @@ public class StoreActivityListAllItems extends Activity {
         final Resources resources = getResources();
 
         drawerArrowDrawable = new com.chillarcards.machinevendor.Widgets.DrawerArrowDrawable(resources);
-        drawerArrowDrawable.setStrokeColor(resources.getColor(R.color.white));
+        drawerArrowDrawable.setStrokeColor(resources.getColor(R.color.luc_black));
         imageView.setImageDrawable(drawerArrowDrawable);
 
         offset = 0;

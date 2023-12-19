@@ -2,13 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@drawable/bg_home">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
 
     <RelativeLayout
         android:id="@+id/layout_actionbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/_55sdp"
+        android:background="@drawable/bg_home"
         android:layout_alignParentTop="true"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical|left"
@@ -31,21 +32,11 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/drawer_indicator"
-            android:text="Check Out"
+            android:text="Checkout"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/txt_home"
             android:textSize="18dp"
             android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/paybtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/bg_edittext_blue"
-            android:text="      PAY      "
-            android:textColor="@color/white" />
-
 
     </RelativeLayout>
 
@@ -53,62 +44,96 @@
         android:id="@+id/lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-
         android:layout_below="@+id/layout_actionbar"
         android:orientation="vertical"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
-
         <LinearLayout
             android:id="@+id/top"
+            android:layout_marginTop="@dimen/_20sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@android:dimen/app_icon_size"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2" >
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Name          "
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:layout_weight="0.7"
+                android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Item Name"
+                    android:textStyle="bold"
+                    android:textColor="@color/txt_black"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Qty"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:layout_weight="0.4"
+                android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Qty"
+                    android:textStyle="bold"
+                    android:textColor="@color/txt_black"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Rate"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:layout_weight="0.4"
+                android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textStyle="bold"
+                    android:textColor="@color/txt_black"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Amount"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:layout_weight="0.4"
+                android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amount"
+                    android:textStyle="bold"
+                    android:textColor="@color/txt_black"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="   "
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:layout_weight="0.1"
+                android:orientation="vertical" >
 
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/txt_black"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
         </LinearLayout>
 
         <View
@@ -136,42 +161,87 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/linearLayout32"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:paddingBottom="15dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
 
-        <LinearLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:background="@drawable/upperline_bg"
+            android:gravity="center"
+            android:padding="10dp"
+            >
 
-            <TextView
-                android:id="@+id/checkout2"
+            <RelativeLayout
+                android:id="@+id/Amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Total"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_alignParentEnd="true"
+
+                >
+
+                <TextView
+                    android:id="@+id/checkout2"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Total "
+                    android:textColor="@color/txt_home"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/totalamt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="$100 "
+                    android:textColor="@color/txt_home"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/paybtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:padding="5dp">
 
             <TextView
-                android:id="@+id/totalamt"
+                android:id="@+id/CartPlaceOrderTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/checkout2"
-                android:layout_weight="1"
-                android:text="CHECKOUT"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
+                android:layout_margin="8dp"
+                android:text="Place Order"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"/>
         </LinearLayout>
 
-
-    </RelativeLayout>
-
+    </LinearLayout>
 
 </RelativeLayout>

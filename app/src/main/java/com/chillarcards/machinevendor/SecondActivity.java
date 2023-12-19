@@ -224,6 +224,7 @@ public class SecondActivity extends Activity {
         protected void onPostExecute(String s) {
 
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//            mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
             mAdapter = new HomePageAdapter(trans_id, trans_type_name, activity, R.layout.list_item, getApplicationContext());
             mRecyclerView.setAdapter(mAdapter);

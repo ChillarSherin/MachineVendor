@@ -128,17 +128,17 @@ public class LogIn extends Activity {
     private void Checkdb() {
 
         SharedPreferences.Editor editor = getSharedPreferences("Chillar", MODE_PRIVATE).edit();
-        editor.putString("machineid", machineid.getText().toString());
-        editor.putString("machineSL", machSerial.getText().toString());
+        editor.putString("machineid", machineid.getText().toString().trim());
+        editor.putString("machineSL", machSerial.getText().toString().trim());
         editor.commit();
 
 
         Intent in = new Intent(getApplicationContext(), MainActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("usernamebundle", urname.getText().toString());
-        bundle.putString("passwordbundle", passwrd.getText().toString());
-        bundle.putString("machinID", machineid.getText().toString());
-        bundle.putString("machinSL", machSerial.getText().toString());
+        bundle.putString("usernamebundle", urname.getText().toString().trim());
+        bundle.putString("passwordbundle", passwrd.getText().toString().trim());
+        bundle.putString("machinID", machineid.getText().toString().trim());
+        bundle.putString("machinSL", machSerial.getText().toString().trim());
         in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         in.putExtras(bundle);
         startActivity(in);

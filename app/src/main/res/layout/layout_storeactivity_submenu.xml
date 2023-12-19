@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_home"
-    >
+    android:background="@color/white">
 
 
     <RelativeLayout
@@ -13,6 +12,8 @@
         android:layout_alignParentTop="true"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical|left"
+        android:background="@drawable/bg_home"
+
         android:orientation="horizontal">
 
         <ImageView
@@ -23,8 +24,22 @@
             android:background="@drawable/drawer_selector"
             android:scaleType="centerInside" />
 
+        <TextView
+            android:id="@+id/button_item"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAllCaps="true"
+            android:textColor="@color/txt_home"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            android:padding="@dimen/_3ssp"
+            android:layout_toEndOf="@+id/drawer_indicator"
+            android:layout_toStartOf="@+id/imaglayout"
+            android:gravity="center|center_vertical"
+            />
 
         <EditText
+            android:visibility="gone"
             android:id="@+id/searchbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_35sdp"
@@ -54,8 +69,8 @@
                 android:id="@+id/checkout2"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/checkout"
                 android:layout_gravity="center"
+                android:src="@drawable/ic_cart"
                 />
 
         </LinearLayout>
@@ -67,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/layout_actionbar"
-        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="10dp"
         android:padding="5dp"/>
 

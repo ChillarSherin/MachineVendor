@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/actionbarbg"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingBottom="10dp">
@@ -20,14 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Card Serial : "
-            android:textColor="@color/white" />
+            android:textColor="@color/txt_home" />
 
         <TextView
             android:id="@+id/cardsl1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TEST"
-            android:textColor="@color/white" />
+            android:textColor="@color/txt_home" />
 
     </LinearLayout>
 
@@ -44,14 +43,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Trans Id : "
-            android:textColor="@color/white" />
+            android:textColor="@color/txt_home" />
 
         <TextView
             android:id="@+id/transID1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TEST"
-            android:textColor="@color/white" />
+            android:textColor="@color/txt_home" />
 
     </LinearLayout>
 
@@ -68,14 +67,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Amount : "
-            android:textColor="@color/white" />
+            android:textColor="@color/txt_home" />
 
         <TextView
             android:id="@+id/amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TEST"
-            android:textColor="@color/white" />
+            android:textColor="@color/txt_home" />
 
     </LinearLayout>
 

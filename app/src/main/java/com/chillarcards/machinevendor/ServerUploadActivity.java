@@ -1,30 +1,19 @@
 package com.chillarcards.machinevendor;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
-import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.crypto.Mac;
-
 import com.chillarcards.machinevendor.ModelClass.Attendance_Data;
 import com.chillarcards.machinevendor.ModelClass.Blocked_Cards_Info;
 import com.chillarcards.machinevendor.ModelClass.Create_Leave;
@@ -37,6 +26,12 @@ import com.chillarcards.machinevendor.ModelClass.Recharge_Data;
 import com.chillarcards.machinevendor.ModelClass.Refund;
 import com.chillarcards.machinevendor.ModelClass.Sales_Item;
 import com.chillarcards.machinevendor.ModelClass.Success_Transaction;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Codmob on 18-09-17.
@@ -91,10 +86,6 @@ public class ServerUploadActivity extends Activity {
         sharedPrefs();
 
         startServerUpload();
-
-
-
-
 
     }
 
@@ -250,7 +241,6 @@ public class ServerUploadActivity extends Activity {
                     JSONObject jsonObject=jsobj.getJSONObject("status");
                     String server_respose=jsonObject.getString("code");
 
-//                       serversuccess=jsobj.getString("serverUpdateTime");
 
                     System.out.println("PhpLoader1  code "+server_respose);
                     if (server_respose.equals("success"))
@@ -760,7 +750,6 @@ public class ServerUploadActivity extends Activity {
                     System.out.println("Chillar: 44 ");
                     PhpLoaderTest12(createleave,0);
                 }else {System.out.println("FU4");
-
                     BlockedCards1();
                 }
 

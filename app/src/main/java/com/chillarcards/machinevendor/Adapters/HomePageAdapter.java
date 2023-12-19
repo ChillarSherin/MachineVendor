@@ -13,26 +13,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chillarcards.machinevendor.AdminSettingsActivity;
-import com.chillarcards.machinevendor.AttendanceActivity;
-import com.chillarcards.machinevendor.CardActivationActivity;
-import com.chillarcards.machinevendor.CardInitializationMenu;
-import com.chillarcards.machinevendor.CashOutActivity;
 import com.chillarcards.machinevendor.Constants;
 import com.chillarcards.machinevendor.DatabaseActivity;
-import com.chillarcards.machinevendor.FeeActivity;
-import com.chillarcards.machinevendor.GateEntryActivity;
-import com.chillarcards.machinevendor.LibraryActivity;
-import com.chillarcards.machinevendor.PaymentActivity;
-import com.chillarcards.machinevendor.Payment_type_names;
 import com.chillarcards.machinevendor.R;
 import com.chillarcards.machinevendor.StoreActivity;
 import com.chillarcards.machinevendor.StoreActivityMenu;
-import com.chillarcards.machinevendor.TeacherAttendance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,22 +66,26 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
 
         holder.button.setText(desc.get(position));
         System.out.println("CHILLAR:eldho " + desc.get(position));
-
+        if (desc.get(position).equals("STORE")){
+            holder.buttonIcon.setImageResource(R.drawable.ic_shop);
+          //  holder.button.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_shop, 0, 0, 0);
+        } else if (desc.get(position).equals("CANTEEN")) {
+            holder.buttonIcon.setImageResource(R.drawable.ic_canteen);
+        } else if (desc.get(position).equals("SNACKS BAR")) {
+            holder.buttonIcon.setImageResource(R.drawable.ic_snacks);
+        }else{
+            holder.buttonIcon.setImageResource(R.drawable.ic_no);
+            // holder.button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_no, 0, 0, 0);
+        }
         //listing the ACTIVITIES and Tables
 
-        holder.button.setOnClickListener(v -> {
+        holder.cardView.setOnClickListener(v -> {
 
             if (desc.get(position).equals("STORE") || desc.get(position).equals("CANTEEN") || desc.get(position).equals("SNACKS BAR")) {
 
                 switch (desc.get(position)) {
                     case "STORE":
-                        Constants.Category = desc.get(position);
-                        System.out.println("CHILLAR: NEw:" + Constants.Category);
-                        break;
                     case "CANTEEN":
-                        Constants.Category = desc.get(position);
-                        System.out.println("CHILLAR: NEw:" + Constants.Category);
-                        break;
                     case "SNACKS BAR":
                         Constants.Category = desc.get(position);
                         System.out.println("CHILLAR: NEw:" + Constants.Category);
@@ -106,71 +101,13 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(i);
 
-            } else if (desc.get(position).equals("LIBRARY")) {
-                Intent in = new Intent(mContext, LibraryActivity.class);
-                in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in);
-
-            } else if (desc.get(position).equals("ATTENDANCE")) {
-                Intent in1 = new Intent(mContext, AttendanceActivity.class);
-                in1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in1);
-
-            } else if (desc.get(position).equals("FEE")) {
-                Intent in2 = new Intent(mContext, FeeActivity.class);
-                in2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in2);
-
-            } else if (desc.get(position).equals("RECHARGE")) {
-                Intent in3 = new Intent(mContext, Payment_type_names.class);
-                in3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in3);
-
-
-            } else if (desc.get(position).equals("CARD INITIALISATION")) {
-                Constants.adminFlag = 2;
-                Intent in4 = new Intent(mContext, CardInitializationMenu.class);
-                in4.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in4);
-            } else if (desc.get(position).equals("PAYMENT")) {
-                Intent in5 = new Intent(mContext, PaymentActivity.class);
-                in5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Bundle b = new Bundle();
-                b.putString("typeId", id.get(position));
-                b.putString("typeName", desc.get(position));
-                in5.putExtras(b);
-                mContext.startActivity(in5);
-            } else if (desc.get(position).equals("DATABASE")) {
+            }else if (desc.get(position).equals("DATABASE")) {
 
                 Intent in5 = new Intent(mContext, DatabaseActivity.class);
                 in5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(in5);
-            } else if (desc.get(position).equals("CARD ACTIVATION")) {
-
-                Intent in5 = new Intent(mContext, CardActivationActivity.class);
-                in5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in5);
-            } else if (desc.get(position).equals("ADMIN SETTINGS")) {
-
-                Intent in5 = new Intent(mContext, AdminSettingsActivity.class);
-                in5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in5);
-            } else if (desc.get(position).equals("BALANCE RETURN")) {
-
-                Intent in5 = new Intent(mContext, CashOutActivity.class);
-                in5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in5);
-            } else if (desc.get(position).equals("TEACHER ATTENDANCE")) {
-
-                Intent in5 = new Intent(mContext, TeacherAttendance.class);
-                in5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in5);
-            } else if (desc.get(position).equals("GATE ENTRY")) {
-
-                Intent in5 = new Intent(mContext, GateEntryActivity.class);
-                in5.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in5);
-            } else {
+            }
+            else {
 
                 System.out.println("EventsWallet: Category " + desc.get(position));
                 Constants.Category = desc.get(position);
@@ -193,13 +130,16 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        final Button button;
+        final TextView button;
+        final ImageView buttonIcon;
+        final CardView cardView;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-
-            button = (Button) itemView.findViewById(R.id.button_item);
+            buttonIcon = itemView.findViewById(R.id.button_item_icon);
+            button = itemView.findViewById(R.id.button_item);
+            cardView = itemView.findViewById(R.id.order_frm);
 
         }
     }

@@ -40,10 +40,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon,android:theme">
-        <activity
-            android:name=".PrintActivity"
-            android:exported="false" />
-
         <meta-data
             android:name="com.onesignal.NotificationOpened.DEFAULT"
             android:value="DISABLE" />
@@ -218,6 +214,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".PrintBillActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RefundScanPay"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MachineBlockTransfer"

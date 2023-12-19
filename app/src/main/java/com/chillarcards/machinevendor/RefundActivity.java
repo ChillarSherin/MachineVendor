@@ -137,24 +137,23 @@ public class RefundActivity extends Activity {
                     dlg.show();
 
 
-                    OkButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dlg.cancel();
+                    OkButton.setOnClickListener(v1 -> {
+                        dlg.cancel();
 
-                            Intent intent = new Intent(getApplicationContext(), RefundNFCNew.class);
-                            Bundle b2 = new Bundle();
-                            b2.putFloat("amount", amount);
-                            b2.putString("transid1", trans_id);
-                            b2.putInt("saletrans", sale_transid);
-                            b2.putString("cardserial", cardserial);
-                            b2.putString("typeId", typeId);
-                            b2.putString("typeName", typeName);
-                            intent.putExtras(b2);
-                            startActivity(intent);
+                        //TODO REFUND Need to redirect to scan the QR and confirm
+                        // -- DEV not completed hide function asp req
 
+                        Intent intent = new Intent(getApplicationContext(), RefundScanPay.class);
+                        Bundle b2 = new Bundle();
+                        b2.putFloat("amount", amount);
+                        b2.putString("transid1", trans_id);
+                        b2.putInt("saletrans", sale_transid);
+                        b2.putString("cardserial", cardserial);
+                        b2.putString("typeId", typeId);
+                        b2.putString("typeName", typeName);
+                        intent.putExtras(b2);
+                        startActivity(intent);
 
-                        }
                     });
 
 
@@ -186,7 +185,6 @@ public class RefundActivity extends Activity {
         refund = (Button) findViewById(R.id.btn_refund);
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setVisibility(View.GONE);
-        refund = (Button) findViewById(R.id.btn_refund);
 
         dlg = new Dialog(this);
 
